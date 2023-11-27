@@ -1,16 +1,12 @@
 import React from 'react';
-import { Card, Button } from '@tremor/react';
+import { Card } from '@tremor/react';
+import {GrowthRatesLineChart, LineChartSliderExample} from '../src/components/organisms/Graphs'; 
 
 const DashboardWidget: React.FC = () => {
     return (
         <Card>
-            <div> 
-                <h2>Dashboard Widget</h2>
-            </div>
-            <Card>
-                <p>Some dashboard content...</p>
-                <Button variant="primary">Action</Button>
-            </Card>
+            <GrowthRatesLineChart />
+            <LineChartSliderExample />
         </Card>
     );
 }
