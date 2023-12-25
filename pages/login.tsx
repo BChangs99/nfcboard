@@ -1,33 +1,50 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import styles from "../src/styles/Login.module.css";
-
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import styles from "../src/styles/Login.module.css";
 
 export default function Login() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <div>Loading</div>;
+    return (
+      <div className={`${styles.container} ${styles.loadingText}`}>
+        Loading...
+      </div>
+    );
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} bg-gray-900`}>
       {!session ? (
         <>
-          <button className={styles.button} onClick={() => signIn("github")}>
-            <FaGithub /> Sign in with GitHub
+          <div className="mb-8"></div>
+          <button
+            onClick={() => signIn("github")}
+            className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
+          >
+            <FaGithub className="mr-2" /> Sign in with GitHub
           </button>
-          <button className={styles.button} onClick={() => signIn("google")}>
-            <FcGoogle /> Sign in with Google
+          <button
+            onClick={() => signIn("google")}
+            className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
+          >
+            <FcGoogle className="mr-2" /> Sign in with Google
           </button>
         </>
       ) : (
         <>
-          <p className={styles.welcome}>
+          <p
+            className={`${styles.welcome} ${styles.welcomeMessage} text-white`}
+          >
+            {" "}
+            {}
             Welcome, {session.user?.name ?? session.user?.email}!
           </p>
-          <button className={styles.button} onClick={() => signOut()}>
+          <button
+            onClick={() => signOut()}
+            className={`${styles.button} bg-red-600 hover:bg-red-700 ${styles.signOutButton}`}
+          >
             Sign out
           </button>
         </>

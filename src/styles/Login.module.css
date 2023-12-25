@@ -1,3 +1,29 @@
+.loadingText {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.signInButton {
+  transition: transform 0.3s ease;
+}
+
+.signInButton:hover {
+  transform: scale(1.05);
+}
+
+.welcomeMessage {
+  color: #0f0;
+  font-style: italic;
+}
+
+.signOutButton {
+  transition: background-color 0.3s ease;
+}
+
+.signOutButton:hover {
+  background-color: #f00;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,25 +35,17 @@
 .button {
   margin: 10px;
   padding: 10px 20px;
-  border: none;
+  border-color: red;
   border-radius: 5px;
-  background-color: #0070f3;
   color: white;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: green;
 }
 
 .welcome {
   margin: 20px;
   font-size: 1.2em;
-}
-
-.button svg {
-  margin-right: 8px;
 }
