@@ -1,9 +1,7 @@
 import React from 'react';
-import { Card, Tab, TabGroup, TabList } from '@tremor/react';
-import { UpTimeCard } from '../src/components/organisms/UpTimeCard'; 
 import { DataBarChart } from '../src/components/organisms/DataBarChart'; 
-import TallyBars from '../src/components/organisms/TallyBars';
 import Header from '../src/components/molecules/Header';
+import DataCarousel from '../src/components/organisms/DataCarousel';
 
 const DashboardWidget: React.FC = () => {
     const [darkMode, setDarkMode] = React.useState(true);
@@ -11,81 +9,6 @@ const DashboardWidget: React.FC = () => {
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
     }
-
-    // Hardcoded data for now
-    const tallyData = [
-        {
-            source: "Source",
-            dataType: "Tallies",
-            name: "All Data",
-            barData: [
-                {
-                    name: "Weight Training",
-                    value: 1230,
-                    href: "",
-                    icon: ""
-                },
-                {
-                    name: "Vitamin Intake",
-                    value: 751,
-                    href: "",
-                    icon: ""
-                },
-                {
-                    name: "Skin Routine",
-                    value: 471,
-                    href: "",
-                    icon: ""
-                }
-            ]
-        },
-        {
-            name: "Vitamin Intake",
-            barData: [
-                {
-                    name: "Steroids",
-                    value: 1230,
-                    href: "",
-                    icon: "",
-                },
-                {
-                    name: "Vitamin C",
-                    value: 751,
-                    href: "",
-                    icon: "",
-                },
-                {
-                    name: "Vitamin D",
-                    value: 471,
-                    href: "",
-                    icon: "",
-                }
-            ]
-        },
-        {
-            name: "Skin Routine",
-            barData: [
-                {
-                    name: "Face Wash",
-                    value: 1230,
-                    href: "",
-                    icon: "",
-                },
-                {
-                    name: "Exfoliant",
-                    value: 751,
-                    href: "",
-                    icon: "",
-                },
-                {
-                    name: "Moisturizer",
-                    value: 471,
-                    href: "",
-                    icon: "",
-                }
-            ]
-        }
-    ]
 
     const barChartData = {
         title: "Total Tallies",
@@ -124,26 +47,12 @@ const DashboardWidget: React.FC = () => {
           ]
     }
 
-
-
-    // ToDo compenentize this into navbar, first row content, and second row main content
     return (
-        <div className={`${darkMode ? "dark" : '' }`} >
-            <div className={`flex flex-col w-screen h-screen dark:bg-black gap-8 p-12`}>
+        <div className={`${darkMode ? "dark" : '' }`}>
+            <div className="flex flex-col w-full min-h-full h-full dark:bg-[url('/dark_background_gradient.png')] bg-[url('/light_background_gradient.png')]  gap-8 p-12">
                 <div className='flex flex-col mb-8'>
-                    <Header toggleDarkMode={toggleDarkMode} />
-                    <TabGroup>
-                        <TabList className="mt-8 mb-8">
-                            <Tab>All Data</Tab>
-                            <Tab>Weight Training</Tab>
-                            <Tab>Face Routine</Tab>
-                        </TabList>
-                    </TabGroup>
-                    <div className='flex flex-row gap-12'>
-                        {tallyData.map((tally) => (
-                            <TallyBars tallyData={tally}/>
-                        ))}
-                    </div>
+                    <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                    <DataCarousel />
                 </div>
                     <DataBarChart data={barChartData}/>
             </div>
