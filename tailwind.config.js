@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 /* eslint-disable max-len */
+
 module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     transparent: "transparent",
     current: "currentColor",
