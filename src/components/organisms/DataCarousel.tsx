@@ -82,7 +82,7 @@ const DataCarousel = () => {
          <DataTabs />
          <div className='flex flex-col items-center gap-12 2xl:flex-row'>
             {tallyData.map((tally) => (
-               <TallyBars tallyData={tally}/>
+               <TallyBars key={tally.name} tallyData={tally}/>
             ))}
          </div>
       </Fragment>
