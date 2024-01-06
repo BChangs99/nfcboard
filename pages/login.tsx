@@ -20,13 +20,13 @@ export default function Login() {
         <>
           <div className="mb-8"></div>
           <button
-            onClick={() => signIn("github")}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
           >
             <FaGithub className="mr-2" /> Sign in with GitHub
           </button>
           <button
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
             className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
           >
             <FcGoogle className="mr-2" /> Sign in with Google
@@ -42,7 +42,7 @@ export default function Login() {
             Welcome, {session.user?.name ?? session.user?.email}!
           </p>
           <button
-            onClick={() => signOut()}
+            onClick={() => signOut({ callbackUrl: "/login" })}
             className={`${styles.button} bg-red-600 hover:bg-red-700 ${styles.signOutButton}`}
           >
             Sign out
