@@ -36,6 +36,43 @@ const Login: React.FC = () => {
             </div>
         </div>
     );
-};
+  }
 
-export default Login;
+  return (
+    <div className={`${styles.container} bg-gray-900`}>
+      {!session ? (
+        <>
+          <div className="mb-8"></div>
+          <button
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+            className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
+          >
+            <FaGithub className="mr-2" /> Sign in with GitHub
+          </button>
+          <button
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+            className={`${styles.button} flex items-center justify-center bg-black hover:bg-gray-700`}
+          >
+            <FcGoogle className="mr-2" /> Sign in with Google
+          </button>
+        </>
+      ) : (
+        <>
+          <p
+            className={`${styles.welcome} ${styles.welcomeMessage} text-white`}
+          >
+            {" "}
+            {}
+            Welcome, {session.user?.name ?? session.user?.email}!
+          </p>
+          <button
+            onClick={() => signOut({ callbackUrl: "/login" })}
+            className={`${styles.button} bg-red-600 hover:bg-red-700 ${styles.signOutButton}`}
+          >
+            Sign out
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
