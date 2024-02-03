@@ -73,7 +73,7 @@ const DashboardWidget: React.FC = () => {
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-      <div className="flex flex-col w-full min-h-full h-screen dark:bg-[url('/dark_background_gradient.png')] bg-[url('/light_background_gradient.png')] bg-center bg-auto gap-8 p-12">
+      <div className="flex flex-col w-full min-h-full h-screen bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 dark:bg-gradient-to-r dark:from-gray-700 dark:via-gray-900 dark:to-black gap-8 p-12">
         <div className="flex flex-col mb-8">
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <DataCarousel />
